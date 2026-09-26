@@ -1,0 +1,306 @@
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins";
+@use "../base/base" as *;
+
+.single-careers,
+.post-type-archive-careers {
+  #hero {
+    @include mixins.grid-container(1200px, 1);
+    background: url("/wp-content/uploads/2026/09/hero-careers.jpg") center
+      center no-repeat;
+    background-size: cover;
+
+    .hero-content {
+      display: block;
+      grid-column: 2/3;
+      align-items: center;
+      height: 210px;
+      z-index: 3;
+      flex-wrap: wrap;
+      padding-top: 150px;
+
+      & > * {
+        color: white;
+        flex: 0 0 100%;
+      }
+
+      p {
+        margin-bottom: 0;
+      }
+
+      h1 {
+        margin-top: 0;
+        text-transform: uppercase;
+      }
+    }
+  }
+  #return {
+    width: 96%;
+    max-width: 1148px;
+    margin: 80px auto;
+
+    @media screen and (max-width: 840px) {
+      margin: 40px auto;
+    }
+
+    a {
+      color: $orange;
+      display: flex;
+      align-items: center;
+      text-transform: uppercase;
+      font-size: 16px;
+      font-weight: bold;
+      transition: ease all 0.2s;
+      column-gap: 10px;
+
+      &:hover {
+        color: $dkgrey;
+        transition: ease all 0.2s;
+      }
+    }
+  }
+
+  .career-single-container {
+    width: 94%;
+    max-width: 850px;
+    margin: 0 auto;
+    padding-bottom: 100px;
+
+    &.coatings {
+      strong {
+        color: $green;
+      }
+    }
+    &.flooring {
+      strong {
+        color: $orange;
+      }
+    }
+    &.roofing {
+      strong {
+        color: $rust;
+      }
+    }
+
+    strong {
+      font-size: 20px;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+
+    h2 {
+      text-transform: uppercase;
+      margin-bottom: 0;
+      font-size: var(--font-size-h3);
+      font-weight: 700;
+      margin-top: 0;
+      margin-bottom: 0;
+      line-height: 1.2;
+    }
+
+    h3 {
+      font-size: var(--sm-title);
+      font-weight: 600;
+      text-transform: uppercase;
+      margin-bottom: 0;
+    }
+
+    p {
+      margin-top: 10px;
+      margin-bottom: 10px;
+
+      &.division {
+        strong {
+          font-weight: 700 !important;
+          font-size: 24px !important;
+          font-family: "Montserrat", sans-serif;
+        }
+      }
+    }
+  }
+
+  #apply {
+    @include mixins.grid-container(1200px, 1);
+
+    &.roofing {
+      background-color: $orange;
+    }
+    &.coatings {
+      background-color: $green;
+    }
+    &.flooring {
+      background-color: $rust;
+    }
+
+    .apply-text {
+      @include mixins.grid-fluid(1);
+      grid-column: 2/3;
+      padding-top: 60px;
+      padding-bottom: 80px;
+      line-height: 1.4;
+
+      h3 {
+        text-transform: uppercase;
+        margin: 0 auto;
+        font-size: var(--font-size-h3);
+        text-align: center;
+        color: white;
+        font-weight: 600;
+      }
+    }
+  }
+}
+
+/* Archive Page  */
+
+#archives-hero {
+  @include mixins.grid-container(1200px, 1);
+  background: url("/wp-content/uploads/2026/09/hero-careers.jpg") center center
+    no-repeat;
+  background-size: cover;
+  padding-bottom: 20px;
+
+  .hero-content {
+    display: block;
+    grid-column: 2/3;
+    align-items: center;
+    height: 210px;
+    z-index: 3;
+    flex-wrap: wrap;
+    padding-top: 150px;
+
+    & > * {
+      color: white;
+      flex: 0 0 100%;
+    }
+
+    p {
+      margin-bottom: 0;
+    }
+
+    h1 {
+      margin-top: 0;
+      text-transform: uppercase;
+    }
+  }
+}
+
+.post-type-archive-careers {
+  #careers-intro-grid {
+    @include mixins.grid-container(1200px, 1);
+    padding-top: 60px;
+    padding-bottom: 60px;
+
+    @media screen and (max-width: 840px) {
+      padding-top: 30px;
+      padding-bottom: 30px;
+    }
+
+    .careers-intro {
+      @include mixins.grid-fluid(4);
+      grid-column: 2/3;
+
+      p {
+        grid-column: 1/4;
+
+        @media screen and (max-width: 840px) {
+          grid-column: 1/-1;
+        }
+      }
+    }
+  }
+
+  #careers-wrap {
+    @include mixins.grid-container(1200px, 1);
+    background: rgba(0, 0, 0, 0.04);
+    padding-bottom: 20px;
+
+    .careers-title-wrap {
+      @include mixins.grid-fluid(1);
+      grid-column: 2/3;
+      margin-top: 70px;
+      margin-bottom: 0px;
+      line-height: 1.4;
+
+      h2 {
+        text-transform: uppercase;
+        font-size: var(--font-size-h3);
+        font-weight: bold;
+        margin-top: 22px;
+        margin-bottom: 34px;
+        line-height: 1.2;
+      }
+    }
+
+    .archive-grid {
+      grid-column: 2/3;
+      margin-top: 10px;
+      margin-bottom: 80px;
+      line-height: 1.4;
+      box-shadow: -2px -1px 9px -2px rgba(0, 0, 0, 0.55);
+
+      .job-post {
+        background: white;
+        border-bottom: 1px solid #707070;
+        padding: 80px;
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        grid-gap: 0 40px;
+
+        @media screen and (max-width: 840px) {
+          padding: 40px;
+          grid-template-columns: 1fr;
+        }
+
+        &:last-of-type {
+          border-bottom: none;
+        }
+
+        .job-description {
+          h3.career-title {
+            font-weight: 700 !important;
+            font-size: var(--sm-title);
+            font-family: "Montserrat", sans-serif;
+            text-transform: uppercase;
+            margin-bottom: 4px;
+            margin-top: 0;
+
+            &.roofing a {
+              color: $rust;
+            }
+            &.coatings a {
+              color: $green;
+            }
+            &.flooring a {
+              color: $orange;
+            }
+          }
+          p.career-employment-type {
+            font-size: var(--sm-title);
+            font-weight: 700;
+            margin-top: 0;
+            margin-bottom: 10px;
+            letter-spacing: 0;
+          }
+
+          .career-excerpt {
+            p {
+              font-size: var(--font-size-body-lg);
+              margin-bottom: 0;
+            }
+          }
+        }
+        .position-link {
+          display: flex;
+          justify-content: flex-end;
+          align-items: center;
+
+          @media screen and (max-width: 840px) {
+            justify-content: flex-start;
+            margin-top: 30px;
+          }
+        }
+      }
+    }
+  }
+}

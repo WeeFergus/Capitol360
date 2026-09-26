@@ -1,0 +1,111 @@
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins";
+@use "../base/base" as *;
+
+.page-template-blog {
+  #hero {
+    @include mixins.grid-container(1200px, 1);
+    background: url("/wp-content/uploads/2026/09/hero-blog.jpg") center center
+      no-repeat;
+    background-size: cover;
+
+    .hero-content {
+      display: block;
+      grid-column: 2/3;
+      align-items: center;
+      height: 210px;
+      z-index: 3;
+      flex-wrap: wrap;
+      padding-top: 150px;
+
+      & > * {
+        color: white;
+        flex: 0 0 100%;
+      }
+
+      p {
+        margin-bottom: 0;
+      }
+
+      h1 {
+        margin-top: 0;
+        text-transform: uppercase;
+      }
+    }
+  }
+
+  main {
+    .two-col-wrap {
+      @include mixins.grid-container(1200px, 1);
+      padding-top: 60px;
+      padding-bottom: 100px;
+
+      .two-col-grid {
+        grid-column: 2/3;
+        @include mixins.grid-fluid(2);
+        grid-gap: 55px;
+
+        @media screen and (max-width: 1024px) {
+          grid-gap: 25px;
+        }
+
+        @media screen and (max-width: 720px) {
+          @include mixins.grid-fluid(1);
+        }
+
+        p.intro-txt {
+          line-height: 1.4;
+
+          @media screen and (max-width: 720px) {
+            margin-top: -30px;
+          }
+        }
+
+        h2 {
+          text-transform: uppercase;
+          font-size: var(--font-size-h3);
+          font-weight: bold;
+          margin-top: 22px;
+          margin-bottom: 34px;
+          line-height: 1.2;
+        }
+
+        .card {
+          box-shadow: 0px 8px 19px rgba(49, 38, 28, 0.08);
+          background: #fff;
+          width: 100%;
+
+          @media screen and (max-width: 720px) {
+            margin-bottom: 30px;
+          }
+
+          &.coatings {
+            border-top: 6px solid $green;
+          }
+
+          &.roofing {
+            border-top: 6px solid $rust;
+          }
+
+          img {
+            border-radius: 0 0 0 50px;
+            width: 100%;
+            height: auto;
+          }
+
+          .txt-block {
+            padding: 0 30px 35px 30px;
+
+            h3 {
+              text-transform: uppercase;
+              font-size: var(--font-size-h4);
+              font-weight: bold;
+              line-height: 1.2;
+              margin-bottom: 23px;
+            }
+          }
+        }
+      }
+    }
+  }
+}

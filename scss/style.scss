@@ -1,0 +1,32 @@
+/*!
+Theme Name: Cap360
+Author: Pete Hudack
+Description: A CSS Grid-based theme by Pete Hudack
+Version: 4.0.0
+License: GNU General Public License v2 or later
+License URI: LICENSE
+Text Domain: cap360
+*/
+
+// Configuration
+@use "abstracts/variables";
+
+// Base
+@use "base/reset";
+@use "base/base";
+@use "base/images";
+@use "base/buttons";
+
+// Layout
+@use "layout/header";
+@use "layout/footer";
+
+// Pages
+@use "pages/home";
+@use "pages/about";
+@use "pages/contact";
+@use "pages/blog";
+@use "pages/careers";
+
+// Utilities
+@use "components/gravity";

@@ -1,0 +1,239 @@
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins";
+@use "../base/base" as *;
+
+header#masthead {
+  height: 110px;
+  background: #fff;
+  @include mixins.grid-container(1200px, 1);
+
+  .header-grid {
+    grid-column: 2/3;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: no-wrap;
+    justify-content: space-between;
+
+    #logo {
+      flex: 0 0 230px;
+      display: grid;
+      grid-template-columns: 1fr;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .menu-main-navigation-container {
+      flex: 0 0 400px;
+      display: grid;
+      grid-template-columns: 1fr;
+      align-items: center;
+      justify-content: center;
+
+      ul {
+        display: flex;
+        flex-direction: row;
+        gap: 20px;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+
+        li {
+          text-transform: uppercase;
+          font-size: var(--font-size-body);
+
+          a {
+            color: $dkgrey;
+            transition: all ease 0.2s;
+            font-weight: 600;
+
+            &:hover {
+              color: $orange;
+              transition: all ease 0.2s;
+            }
+          }
+        }
+      }
+    }
+    #call-us {
+      flex: 0 0 110px;
+      display: grid;
+      grid-template-columns: 1fr;
+      align-items: center;
+      justify-content: flex-end;
+
+      a {
+        color: $orange;
+        transition: all ease 0.2s;
+        font-weight: 600;
+        text-transform: uppercase;
+        font-size: var(--font-size-body);
+
+        &:hover {
+          color: $dkgrey;
+          transition: all ease 0.2s;
+        }
+      }
+    }
+
+    .mobile-nav-toggle {
+      display: none;
+      flex: 0 0 auto;
+      align-items: center;
+      justify-content: center;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      font-size: 24px;
+      color: $rust;
+      transition: color ease 0.2s;
+
+      &:hover {
+        color: $orange;
+      }
+    }
+  }
+
+  @media (max-width: 860px) {
+    .header-grid {
+      .menu-main-navigation-container,
+      #call-us {
+        display: none;
+      }
+
+      .mobile-nav-toggle {
+        display: flex;
+      }
+    }
+  }
+}
+
+// Mobile nav slide-out panel
+.mobile-nav-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 1000;
+  opacity: 0;
+  transition: opacity ease 0.3s;
+
+  &.is-open {
+    display: block;
+    opacity: 1;
+  }
+}
+
+.mobile-nav {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: min(320px, 85vw);
+  background: #fff;
+  box-shadow: -2px 0 12px rgba(0, 0, 0, 0.15);
+  z-index: 1001;
+  transform: translateX(100%);
+  transition: transform ease 0.3s;
+  display: flex;
+  flex-direction: column;
+  padding: 60px 30px 30px;
+  overflow-y: auto;
+
+  &.is-open {
+    transform: translateX(0);
+  }
+
+  .mobile-nav-close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 26px;
+    color: $dkgrey;
+    padding: 5px;
+
+    &:hover {
+      color: $orange;
+    }
+  }
+
+  #mobile-primary-menu {
+    ul.mobile-menu {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+
+      li {
+        border-bottom: 1px solid rgba($dkgrey, 0.1);
+
+        a {
+          display: block;
+          padding: 15px 0;
+          color: $dkgrey;
+          text-transform: uppercase;
+          font-weight: 600;
+          font-size: var(--font-size-body);
+          transition: color ease 0.2s;
+
+          &:hover {
+            color: $orange;
+          }
+        }
+      }
+    }
+  }
+
+  .mobile-nav-call {
+    margin-top: 30px;
+
+    a {
+      color: $orange;
+      font-weight: 600;
+      text-transform: uppercase;
+      font-size: var(--font-size-body);
+      transition: color ease 0.2s;
+
+      &:hover {
+        color: $dkgrey;
+      }
+    }
+  }
+}
+
+body.mobile-nav-open {
+  overflow: hidden;
+}
+#colorband {
+  display: grid;
+  grid-template-columns:
+    minmax(30px, 1fr)
+    minmax(0, 580px)
+    minmax(0, 580px)
+    minmax(0, 580px)
+    minmax(30px, 1fr);
+  height: 15px;
+  width: 100%;
+
+  div {
+    height: 100%;
+    width: 100%;
+
+    &:nth-of-type(1) {
+      background: $rust;
+      grid-column: 1/3;
+    }
+    &:nth-of-type(2) {
+      background: $orange;
+      grid-column: 3/4;
+    }
+    &:nth-of-type(3) {
+      background: $green;
+      grid-column: 4/6;
+    }
+  }
+}

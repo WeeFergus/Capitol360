@@ -1,0 +1,218 @@
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins";
+@use "../base/base" as *;
+
+body.page-contact {
+  #hero {
+    @include mixins.grid-container(1200px, 1);
+    background: url("/wp-content/uploads/2026/09/hero-contact.jpg") center
+      center no-repeat;
+    background-size: cover;
+
+    @media screen and (max-width: 768px) {
+      background-position: 70%;
+    }
+
+    .hero-content {
+      display: block;
+      grid-column: 2/3;
+      align-items: center;
+      height: 210px;
+      z-index: 3;
+      flex-wrap: wrap;
+      padding-top: 150px;
+
+      & > * {
+        color: white;
+        flex: 0 0 100%;
+      }
+
+      p {
+        margin-bottom: 0;
+      }
+
+      h1 {
+        margin-top: 0;
+        text-transform: uppercase;
+      }
+    }
+  }
+
+  #contact-intro-grid {
+    @include mixins.grid-container(1200px, 1);
+    padding-top: 60px;
+    padding-bottom: 60px;
+
+    @media screen and (max-width: 840px) {
+      padding-top: 30px;
+      padding-bottom: 30px;
+    }
+    .contact-intro {
+      @include mixins.grid-fluid(4);
+      grid-column: 2/3;
+      grid-gap: 0 50px;
+
+      @media screen and (max-width: 840px) {
+        @include mixins.grid-fluid(1);
+      }
+
+      .intro-title {
+        grid-column: 1/3;
+
+        @media screen and (max-width: 840px) {
+          grid-column: 1/2;
+        }
+
+        h2 {
+          text-transform: uppercase;
+          font-size: var(--font-size-h3);
+          font-weight: bold;
+          line-height: 1.2;
+          max-width: 500px;
+          grid-column: 1/4;
+          grid-row: 1/2;
+          margin: 0 auto 0 0;
+        }
+      }
+
+      .intro-text {
+        grid-column: 1/4;
+        grid-row: 2/3;
+      }
+
+      sidebar {
+        grid-column: 4/5;
+        grid-row: 2/3;
+
+        @media screen and (max-width: 840px) {
+          grid-column: 1/2;
+          grid-row: 3/4;
+        }
+
+        a {
+          color: $orange;
+        }
+      }
+    }
+  }
+
+  main.contact {
+    grid-column: 1/-1;
+    @include mixins.grid-container(680px, 1);
+    background-color: rgba(0, 0, 0, 0.04);
+
+    .form-grid {
+      grid-column: 2/3;
+      @include mixins.grid-fluid(1);
+      align-items: center;
+      grid-gap: 100px 40px;
+      padding-top: 70px;
+      padding-bottom: 40px;
+
+      @media screen and (max-width: 840px) {
+        padding-top: 40px;
+        padding-bottom: 20px;
+      }
+
+      .form-wrap {
+        box-shadow: 0 8px 19px 0 rgba(49, 38, 28, 0.08);
+        background: white;
+        padding: 72px;
+      }
+    }
+  }
+}
+p.form-caps {
+  font-family: $primaryFont;
+  text-transform: uppercase;
+  font-size: 19px;
+  font-weight: bold;
+  margin-bottom: 0;
+}
+
+.gform_wrapper.gravity-theme {
+  .gform_footer {
+    button-color: $orange;
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    width: fit-content;
+    padding: 3px 28px 3px 3px;
+    border: 1px solid var(--button-color);
+    border-radius: 999px;
+    overflow: hidden;
+    isolation: isolate;
+
+    // fill slide
+    &::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: var(--button-color);
+      transform: scaleX(0);
+      transform-origin: left center;
+      transition: transform 0.2s ease;
+      z-index: 0;
+    }
+
+    // icon circle — stands in for .btn-icon; order:-1 puts it before the input
+    &::after {
+      content: "\2192"; // →
+      order: -1;
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      flex-shrink: 0;
+      border-radius: 50%;
+      background: var(--button-color);
+      color: #fff;
+      font-size: 18px;
+      line-height: 1;
+      transition:
+        background-color 0.2s ease,
+        color 0.2s ease;
+    }
+
+    input[type="submit"],
+    .gform_button {
+      position: relative;
+      z-index: 1;
+      margin: 0;
+      padding: 0;
+      border: none;
+      background: transparent;
+      color: var(--button-color);
+      font-family: $primaryFont;
+      font-weight: 600;
+      font-size: 19px;
+      letter-spacing: 0;
+      text-transform: uppercase;
+      white-space: nowrap;
+      cursor: pointer;
+      transition: color 0.2s ease;
+
+      &:focus {
+        outline: none;
+      }
+    }
+
+    &:hover {
+      &::before {
+        transform: scaleX(1);
+      }
+      &::after {
+        background-color: #fff;
+        color: var(--button-color);
+      }
+      input[type="submit"],
+      .gform_button {
+        color: #fff;
+      }
+    }
+  }
+}

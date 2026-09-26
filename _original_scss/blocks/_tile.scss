@@ -1,0 +1,26 @@
+.tile {
+	border-radius: 8px;
+	overflow: hidden;
+	background: #fff;
+	transition: transform .2s ease, box-shadow .2s ease;
+    
+	a {
+		text-decoration: none;
+		color: inherit;
+		display: block;
+	}
+
+	&:hover {
+		transform: translateY(-4px);
+		box-shadow: 0 10px 30px rgba(0,0,0,.1);
+	}
+}
+
+.tile__image img {
+	width: 100%;
+	display: block;
+}
+
+.tile__content {
+	padding: 1.25rem;
+}

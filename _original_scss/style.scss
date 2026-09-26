@@ -1,0 +1,41 @@
+/*!
+Theme Name: Cap360
+Theme URI: http://underscores.me/
+Author: Pete Hudack
+Author URI: http://underscores.me/
+Description: A CSS Grid-based theme by Pete Hudack
+Version: 2.0.0
+License: GNU General Public License v2 or later
+License URI: LICENSE
+Text Domain: cap360
+*/
+
+// Modules
+@import 'modules/mixins';
+
+// Partials
+@import 'partials/reset';
+@import 'partials/variables';
+@import 'partials/base';
+@import 'partials/images';
+@import 'partials/buttons';
+@import 'partials/comments';
+@import 'partials/print';
+
+// Header Footer
+@import 'templates/header';
+@import 'templates/footer';
+
+// Demo Content
+@import 'templates/demo';
+
+//Page Content
+@import 'templates/home';
+@import 'templates/contact';
+@import 'templates/blog';
+@import 'templates/partnerships';
+
+//Blocks
+@import 'blocks/tile';
+@import 'blocks/card-grid';
+

@@ -1,0 +1,349 @@
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins";
+@use "../base/base" as *;
+
+body.page-about-us {
+  #hero {
+    @include mixins.grid-container(1200px, 1);
+    background-color: $dkgrey;
+    background-position: center center;
+    background-size: cover;
+    position: relative;
+
+    &::after {
+      position: absolute;
+      content: "";
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background: rgba(0, 0, 0, 0.4);
+    }
+
+    .hero-content {
+      display: block;
+      grid-column: 2/3;
+      align-items: center;
+      height: 210px;
+      z-index: 3;
+      flex-wrap: wrap;
+      padding-top: 150px;
+
+      & > * {
+        color: white;
+        flex: 0 0 100%;
+      }
+
+      p {
+        margin-bottom: 0;
+      }
+
+      h1 {
+        margin-top: 0;
+        text-transform: uppercase;
+      }
+    }
+  }
+
+  main.experience {
+    padding-top: 60px;
+    padding-bottom: 0px;
+    @include mixins.grid-container(1200px, 1);
+
+    @media screen and (max-width: 1024px) {
+      padding-top: 30px;
+    }
+
+    .two-col {
+      grid-column: 2/3;
+      @include mixins.grid-fluid(2);
+      align-items: center;
+      grid-gap: 100px 40px;
+
+      @media screen and (max-width: 840px) {
+        @include mixins.grid-fluid(1);
+      }
+
+      .col {
+        p.intro-txt {
+          line-height: 1.4;
+        }
+
+        h2 {
+          text-transform: uppercase;
+          font-size: var(--font-size-h3);
+          font-weight: bold;
+          margin-top: 22px;
+          margin-bottom: 34px;
+          line-height: 1.2;
+        }
+      }
+    }
+
+    #main-about-content {
+      grid-column: 1/-1;
+      @include mixins.grid-container(1200px, 1);
+      background-color: rgba(0, 0, 0, 0.04);
+      margin-top: 50px;
+
+      .main-content-grid {
+        grid-column: 2/3;
+        @include mixins.grid-fluid(2);
+        align-items: center;
+        grid-gap: 100px 40px;
+        padding-top: 70px;
+        padding-bottom: 40px;
+
+        @media screen and (max-width: 840px) {
+          padding-top: 40px;
+          padding-bottom: 20px;
+        }
+
+        .main-content-title {
+          grid-column: 1/-1;
+          max-width: 530px;
+          width: 100%;
+          margin: 0 auto;
+
+          h2 {
+            text-transform: uppercase;
+            font-size: var(--font-size-h3);
+            font-weight: bold;
+            margin-top: 22px;
+            margin-bottom: 0px;
+            line-height: 1.2;
+            text-align: center;
+          }
+        }
+
+        .main-two-col {
+          grid-column: 1/-1;
+          @include mixins.grid-fluid(2);
+          align-items: center;
+          grid-gap: 100px 40px;
+
+          .main-col {
+            ul.left-border {
+              border-left: 6px solid $rust;
+              margin-left: 0px;
+              padding-left: 30px;
+
+              li::marker {
+                color: $rust;
+                font-size: 10px;
+              }
+            }
+
+            #jobsite-slider {
+              --js-accent: $orange;
+              --js-accent-dark: #$rust;
+              --js-line: #c05837;
+              position: relative;
+              width: 100%;
+              max-width: 100%;
+              margin: 0 auto;
+              border-top: 4px solid var(--js-line);
+              background: #0d0d0d;
+              overflow: hidden;
+              border-radius: 2px;
+
+              .js-viewport {
+                position: relative;
+                width: 100%;
+                overflow: hidden;
+                aspect-ratio: 1 / 1;
+              }
+
+              .js-track {
+                display: flex;
+                height: 100%;
+                will-change: transform;
+                transition: transform 600ms cubic-bezier(0.65, 0, 0.35, 1);
+              }
+
+              .js-slide {
+                flex: 0 0 100%;
+                height: 100%;
+                position: relative;
+                img {
+                  width: 100%;
+                  height: 100%;
+                  object-fit: cover;
+                  display: block;
+                  user-select: none;
+                  -webkit-user-drag: none;
+                }
+              }
+
+              .js-controls {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                gap: 16px;
+                padding: 14px 20px;
+                background: #f4f4f4;
+              }
+
+              .js-arrows {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+              }
+
+              .js-arrow {
+                width: 38px;
+                height: 38px;
+                border-radius: 50%;
+                border: none;
+                background: $orange;
+                color: #fff;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                cursor: pointer;
+              }
+              .js-dots {
+                display: flex;
+                align-items: center;
+                gap: 8px;
+              }
+              .js-dot {
+                width: 9px;
+                height: 9px;
+                border-radius: 50%;
+                border: 1px solid $orange;
+                padding: 0;
+                background: #fff;
+                cursor: pointer;
+                transition:
+                  background 150ms ease,
+                  transform 150ms ease;
+                &:hover {
+                  background: $rust;
+                }
+              }
+              .js-dot.is-active {
+                background: $orange;
+                transform: scale(1.25);
+              }
+            }
+
+            @media (max-width: 480px) {
+              #jobsite-slider {
+                .js-controls {
+                  padding: 12px 16px;
+                }
+                .js-arrow {
+                  width: 34px;
+                  height: 34px;
+                }
+              }
+            }
+            @media (prefers-reduced-motion: reduce) {
+              #jobsite-slider {
+                .js-track {
+                  transition: none;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  #philosophy {
+    @include mixins.grid-container(1200px, 2);
+    min-height: 720px;
+    grid-gap: 0;
+
+    @media screen and (max-width: 840px) {
+      @include mixins.grid-fluid(1);
+    }
+
+    .bkgnd {
+      background: url("/wp-content/uploads/2026/09/philosophy-block-bkgnd.jpg")
+        center center no-repeat;
+      background-size: cover;
+      grid-column: 1/3;
+      grid-row: 1/2;
+      height: 100%;
+      width: 100%;
+
+      @media screen and (max-width: 840px) {
+        display: none;
+      }
+    }
+
+    .two-col-wrap {
+      @include mixins.grid-fluid(2);
+      grid-column: 2/4;
+      grid-row: 1/2;
+
+      .col-1 {
+        grid-column: 1/2;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-content: flex-start;
+        padding-right: 80px;
+        padding-top: 150px;
+        letter-spacing: -1px;
+
+        @media screen and (max-width: 1024px) {
+          padding-right: 30px;
+        }
+
+        @media screen and (max-width: 840px) {
+          grid-column: 1/-1;
+          background: url("/wp-content/uploads/2026/09/philosophy-block-bkgnd.jpg")
+            center center no-repeat;
+          background-size: cover;
+          padding: 50px 30px;
+        }
+
+        & > * {
+          color: #fff;
+        }
+
+        h2 {
+          text-transform: uppercase;
+          font-weight: bold;
+          margin-bottom: 0;
+          margin-top: 0;
+        }
+      }
+
+      .col-2 {
+        grid-column: 2/3;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-content: flex-start;
+        padding-left: 80px;
+        padding-top: 150px;
+        letter-spacing: -1px;
+
+        @media screen and (max-width: 1024px) {
+          padding-left: 30px;
+        }
+
+        @media screen and (max-width: 840px) {
+          grid-column: 1/-1;
+          padding: 50px 30px;
+        }
+
+        h2 {
+          text-transform: uppercase;
+          font-weight: bold;
+          margin-bottom: 0;
+          margin-top: 0;
+        }
+
+        a.arrow-right-button {
+          margin-top: 20px;
+        }
+      }
+    }
+  }
+}

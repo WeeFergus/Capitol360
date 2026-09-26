@@ -1,0 +1,121 @@
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins";
+@use "../base/base" as *;
+
+footer {
+  min-height: 320px;
+  background: #fff;
+  @include mixins.grid-container(1200px, 1);
+  background: url("/wp-content/uploads/2026/09/urban-overhead.jpg") center
+    center no-repeat;
+  background-size: cover;
+  padding-top: 100px;
+
+  @media screen and (max-width: 620px) {
+    padding-top: 50px;
+  }
+
+  p,
+  ul {
+    color: #fff;
+  }
+
+  a {
+    color: #fff;
+
+    &:hover {
+      color: $orange;
+    }
+  }
+
+  .footer-grid {
+    grid-column: 2/3;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: no-wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding-bottom: 100px;
+
+    @media screen and (max-width: 1170px) {
+      column-gap: 40px;
+    }
+
+    @media screen and (max-width: 1024px) {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      column-gap: 20px;
+    }
+
+    @media screen and (max-width: 620px) {
+      padding-bottom: 50px;
+    }
+
+    #footer-logo {
+      flex: 0 1 540px;
+      align-items: center;
+      justify-content: center;
+
+      @media screen and (max-width: 1024px) {
+        grid-column: 1/3;
+      }
+
+      img {
+        width: 218px;
+      }
+    }
+
+    #divisions-menu {
+      flex: 0 0 260px;
+      ul li a {
+        font-size: var(--font-size-body-lg);
+      }
+
+      @media screen and (max-width: 1024px) {
+        grid-column: 1/2;
+      }
+
+      @media screen and (max-width: 620px) {
+        grid-column: 1/3;
+      }
+    }
+
+    #contact-cta {
+      flex: 0 0 300px;
+      a {
+        font-size: var(--font-size-body-lg);
+      }
+
+      @media screen and (max-width: 1024px) {
+        grid-column: 2/3;
+      }
+
+      @media screen and (max-width: 620px) {
+        grid-column: 1/3;
+      }
+    }
+
+    p.footer-menu-title {
+      text-transform: uppercase;
+      font-size: 19px;
+      color: #fff;
+      font-weight: 600;
+    }
+  }
+
+  #subfooter {
+    grid-column: 1/-1;
+    min-height: 50px;
+    border-top: solid 1px #707070;
+    width: 100%;
+    @include mixins.grid-container(1200px, 1);
+    align-items: center;
+    justify-content: flex-start;
+
+    .copyright {
+      grid-column: 2/3;
+      color: #fff;
+      font-size: 12px;
+    }
+  }
+}

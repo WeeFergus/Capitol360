@@ -1,0 +1,143 @@
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins" as *;
+
+// Globals
+input,
+textarea {
+  transition: all 0.1s ease-in-out;
+  &:focus {
+    outline: 2px solid $dkgrey;
+  }
+}
+
+:root {
+  --font-size-h1: clamp(38px, 8.8333333333px + 5.8333333333vw, 80px);
+  --font-size-h2: clamp(32px, 16.7222222222px + 3.0555555556vw, 54px);
+  --font-size-h3: clamp(28px, 18.2777777778px + 1.9444444444vw, 42px);
+  --font-size-h4: clamp(24px, 18.4444444444px + 1.1111111111vw, 36px);
+  --font-size-h5: clamp(20px, 13.8333333333px + 0.8333333333vw, 28px);
+  --font-size-body-lg: clamp(16px, 13.714286px + 0.714286vw, 19px);
+  --font-size-body: clamp(14px, 14.6111111111px + 0.2777777778vw 18px);
+  --sm-title: clamp(18px, 13.8333333333px + 0.8333333333vw, 24px);
+}
+
+body {
+  font-size: var(--font-size-body);
+  font-family: $secondaryFont;
+  font-weight: $fw-regular;
+  line-height: 1.6;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: $primaryFont;
+}
+
+h1,
+.h1 {
+  font-size: var(--font-size-h1);
+  color: $dkgrey;
+}
+
+h2,
+.h2 {
+  font-size: var(--font-size-h2);
+  color: $dkgrey;
+}
+
+h3,
+.h3 {
+  font-size: var(--font-size-h3);
+  font-weight: normal;
+  color: $dkgrey;
+  line-height: 1.2;
+}
+
+h4,
+.h4 {
+  font-size: var(--font-size-h4);
+  font-weight: normal;
+  color: $dkgrey;
+}
+
+h5,
+.h5 {
+  font-size: var(--font-size-h5);
+  color: $dkgrey;
+}
+
+a {
+  @include general-transition();
+  text-decoration: none;
+  color: $dkgrey;
+  &:hover {
+    color: $dkgrey;
+  }
+}
+
+ul {
+  padding-left: 20px;
+  font-family: $secondaryFont;
+}
+
+ol {
+  padding-left: 23px;
+  font-family: $secondaryFont;
+}
+
+strong,
+b {
+  font-weight: $fw-bold;
+}
+
+.entry-title {
+  margin-top: 100px;
+}
+
+p,
+li {
+  font-size: var(--font-size-body);
+  letter-spacing: 1px;
+  font-family: $secondaryFont;
+
+  &.sm-caps {
+    text-transform: uppercase;
+    font-size: 19px;
+    letter-spacing: 3px;
+    font-weight: bold;
+  }
+
+  &.intro-txt {
+    max-width: 750px;
+    margin: 10px auto 0 auto;
+    font-size: 24px;
+    letter-spacing: 0;
+  }
+}
+
+p.subtitle {
+  font-size: clamp(1.25rem, 0.827rem + 1.23vw, 1.75rem);
+  font-family: $secondaryFont;
+}
+
+.radius-bl-80 {
+  border-radius: 0 0 0 80px;
+}
+
+.radius-br-80 {
+  border-radius: 0 0 80px 0;
+}
+
+h1.compressed {
+  display: inline-block;
+  transform: scaleX(0.9);
+  transform-origin: left;
+}
+
+h1.italic {
+  font-style: italic;
+}

@@ -1,0 +1,301 @@
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins";
+@use "../base/base" as *;
+@use "sass:color";
+
+$font-base: 22px;
+$color-border: #31261c;
+$color-border-focus: #a89f92;
+$color-placeholder: #31261c;
+$color-accent: #c15b1f; // orange checkbox / accents
+$color-bg: #ffffff;
+$color-disclaimer: #8a8a8a;
+$radius: 0;
+$gap: 20px;
+$field-padding: 24px 16px;
+$border-width: 1px;
+$section-label-size: 0.8rem;
+$section-label-tracking: 0.08em;
+
+.gform_wrapper {
+  font-family: $primaryFont;
+  color: #000;
+  max-width: 640px;
+
+  .gform_heading {
+    margin-bottom: 24px;
+
+    .gform_title {
+      font-size: 1.4rem;
+      font-weight: 500;
+      margin: 0;
+      color: #000;
+    }
+  }
+
+  // -------------------------------------------------------------------
+  // Section headings (CONTACT INFORMATION / PROJECT INFORMATION)
+  // -------------------------------------------------------------------
+  .gsection,
+  .gfield--type-section {
+    border: none;
+    margin: 32px 0 16px;
+    padding: 0;
+
+    &:first-of-type {
+      margin-top: 0;
+    }
+
+    .gsection_title,
+    .gfield_label {
+      font-size: $section-label-size;
+      font-weight: 700;
+      letter-spacing: $section-label-tracking;
+      text-transform: uppercase;
+      color: #000;
+      margin: 0;
+    }
+  }
+
+  // -------------------------------------------------------------------
+  // Field grid
+  // -------------------------------------------------------------------
+  .gform_fields {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: $gap;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .gfield {
+    grid-column: span 2;
+
+    // First/Last name, Email/Phone sit side by side
+    &.gfield--width-half {
+      /*grid-column: span 1;*/
+    }
+
+    @media (max-width: 600px) {
+      &.gfield--width-half {
+        grid-column: span 2;
+      }
+    }
+  }
+
+  .gsection .gfield_label,
+  .gfield--type-section .gfield_label {
+    display: block;
+  }
+
+  // -------------------------------------------------------------------
+  // Inputs
+  // -------------------------------------------------------------------
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  input[type="number"],
+  input[type="url"],
+  textarea,
+  select,
+  .ginput_container_phone input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: $field-padding;
+    border: $border-width solid $color-border;
+    border-radius: $radius;
+    background-color: $color-bg;
+    font-family: $font-base;
+    font-size: 0.95rem;
+    transition: border-color 0.15s ease;
+
+    &::placeholder {
+      color: $color-placeholder;
+    }
+
+    &:focus {
+      outline: none;
+      border-color: $color-border-focus;
+    }
+  }
+
+  textarea {
+    min-height: 140px;
+    resize: vertical;
+    line-height: 1.5;
+    padding-top: 10px;
+  }
+
+  // -------------------------------------------------------------------
+  // Select / dropdown (Project Type)
+  // -------------------------------------------------------------------
+  .ginput_container_select {
+    position: relative;
+
+    select {
+      appearance: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      padding-right: 40px;
+      cursor: pointer;
+      color: $color-placeholder;
+    }
+
+    &::after {
+      content: "";
+      display: none;
+      position: absolute;
+      top: 50%;
+      right: 16px;
+      width: 10px;
+      height: 10px;
+      border-right: 2px solid black;
+      border-bottom: 2px solid #000;
+      transform: translateY(-70%) rotate(45deg);
+      pointer-events: none;
+    }
+  }
+
+  // -------------------------------------------------------------------
+  // Consent copy above checkboxes ("Subscribe to get expert advice...")
+  // -------------------------------------------------------------------
+  .gfield--type-html,
+  .gfield_html {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: #000;
+  }
+
+  // -------------------------------------------------------------------
+  // Checkboxes
+  // -------------------------------------------------------------------
+  .gfield_checkbox,
+  .ginput_container_checkbox {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    .gchoice {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 12px;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    input[type="checkbox"] {
+      appearance: none;
+      -webkit-appearance: none;
+      width: 20px;
+      height: 20px;
+      flex: 0 0 20px;
+      border: $border-width solid $color-border;
+      border-radius: 2px;
+      background-color: $color-bg;
+      cursor: pointer;
+      position: relative;
+      margin: 0;
+
+      &:checked {
+        background-color: $color-accent;
+        border-color: $color-accent;
+      }
+
+      &:checked::after {
+        content: "";
+        position: absolute;
+        left: 6px;
+        top: 2px;
+        width: 5px;
+        height: 10px;
+        border: solid #fff;
+        border-width: 0 2px 2px 0;
+        transform: rotate(45deg);
+      }
+    }
+
+    label {
+      font-size: 0.95rem;
+      color: #000;
+      cursor: pointer;
+
+      a {
+        color: #000;
+        text-decoration: underline;
+
+        &:hover {
+          color: $color-accent;
+        }
+      }
+    }
+  }
+
+  // Marketing opt-in checkbox pre-styled as "on" per screenshot
+  .gfield.subscribe-optin input[type="checkbox"] {
+    background-color: $color-accent;
+    border-color: $color-accent;
+  }
+
+  // -------------------------------------------------------------------
+  // SMS / legal disclaimer text
+  // -------------------------------------------------------------------
+  .gfield_description,
+  .gform_footer + .disclaimer,
+  .disclaimer-text {
+    font-size: 0.78rem;
+    line-height: 1.5;
+    color: $color-disclaimer;
+    margin-top: 16px;
+  }
+
+  // -------------------------------------------------------------------
+  // Footer / submit button
+  // -------------------------------------------------------------------
+  .gform_footer {
+    margin-top: 28px;
+    padding: 0;
+
+    input[type="submit"],
+    .gform_button {
+      appearance: none;
+      border: none;
+      border-radius: $radius;
+      background-color: $color-accent;
+      color: #fff;
+      font-weight: 600;
+      font-size: 0.95rem;
+      padding: 14px 32px;
+      cursor: pointer;
+      transition: background-color 0.15s ease;
+
+      &:hover {
+        background-color: color.adjust($color-accent, $lightness: -8%);
+      }
+    }
+  }
+
+  // -------------------------------------------------------------------
+  // Validation states
+  // -------------------------------------------------------------------
+  .gfield_error {
+    input,
+    textarea,
+    select {
+      border-color: #c0392b;
+    }
+  }
+
+  .validation_message {
+    font-size: 0.8rem;
+    color: #c0392b;
+    margin-top: 6px;
+  }
+}
+
+.gform-theme--foundation .gform_fields {
+  grid-row-gap: 15px !important; /* Change to your preferred spacing */
+}

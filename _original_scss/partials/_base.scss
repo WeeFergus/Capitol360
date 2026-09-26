@@ -1,0 +1,90 @@
+// Globals
+input,
+textarea {
+	transition: all 0.1s ease-in-out;
+	&:focus {
+		outline: 2px solid $dkgrey;
+	}
+}
+
+body {
+	font-size: 1rem;
+	font-family: $primaryFont;
+	margin: 0;
+	line-height: 1.4;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  	font-family: $primaryFont;
+}
+
+h1 {
+	font-size: 3rem;
+	color: $dkgrey;
+}
+
+h2 {
+	font-size: 2.25rem;
+	color: $dkgrey;
+}
+
+h3 {
+	font-size: 1.5rem;
+	font-weight: normal;
+	color: $dkgrey;
+}
+
+h4 {
+	font-size: 1.3125rem;
+    font-weight: normal;
+	color: $dkgrey;
+}
+
+h5 {
+	@extend h4;
+	color: $dkgrey;
+}
+
+h6 {
+	@extend h5;
+	color: $dkgrey;
+}
+
+a {
+	@include general-transition();
+	text-decoration: none;
+	color: $dkgrey;
+	&:hover {
+		color: $dkgrey;
+	}
+}
+
+ul {
+	padding-left: 20px;
+}
+
+ol {
+	padding-left: 23px;
+}
+
+b,
+strong {
+	font-family: $primaryFont;
+}
+
+.entry-title {
+	margin-top: 100px;
+}
+
+p,
+li  {
+	line-height: 1.4;
+}
+
+
+
