@@ -123,20 +123,32 @@
     @include mixins.grid-container(1200px, 1);
 
     &.roofing {
-      background-color: $orange;
+      background-color: $rust;
+      background-image: url("/wp-content/uploads/2026/09/c-roofing.svg");
+      background-position: left bottom;
+      background-repeat: no-repeat;
+      background-size: cover;
     }
     &.coatings {
       background-color: $green;
+      background-image: url("/wp-content/uploads/2026/09/c-coating.svg");
+      background-position: left bottom;
+      background-repeat: no-repeat;
+      background-size: cover;
     }
     &.flooring {
-      background-color: $rust;
+      background-color: $orange;
+      background-image: url("/wp-content/uploads/2026/09/c-flooring.svg");
+      background-position: left bottom;
+      background-repeat: no-repeat;
+      background-size: contain;
     }
 
     .apply-text {
       @include mixins.grid-fluid(1);
       grid-column: 2/3;
       padding-top: 60px;
-      padding-bottom: 80px;
+      padding-bottom: 40px;
       line-height: 1.4;
 
       h3 {
@@ -146,6 +158,107 @@
         text-align: center;
         color: white;
         font-weight: 600;
+      }
+
+      .arrow-right-button-white {
+        font-family: $primaryFont;
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        gap: 14px;
+        padding: 3px 28px 3px 3px;
+        border: 1px solid white;
+        border-radius: 999px;
+        text-decoration: none;
+        overflow: hidden;
+        isolation: isolate;
+        width: auto;
+        max-width: 180px;
+        margin: 20px auto;
+
+        &::before {
+          content: "";
+          position: absolute;
+          inset: 0;
+          background: white;
+          transform: scaleX(0);
+          transform-origin: left center;
+          transition: transform 0.2s ease;
+          z-index: 0;
+        }
+
+        .btn-icon {
+          position: relative;
+          z-index: 1;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 36px;
+          height: 36px;
+          border-radius: 50%;
+          background: white;
+          flex-shrink: 0;
+
+          transition:
+            background-color 0.2s ease,
+            color 0.2s ease;
+
+          svg {
+            width: 22px;
+            height: 22px;
+
+            &.roofing line,
+            &.roofing polyline {
+              stroke: $rust;
+              transition: fill 0.2s ease;
+            }
+            &.coating line,
+            &.coating polyline {
+              stroke: $green;
+              transition: fill 0.2s ease;
+            }
+            &.flooring line,
+            &.flooring polyline {
+              stroke: $orange;
+              transition: fill 0.2s ease;
+            }
+          }
+        }
+
+        .btn-text {
+          position: relative;
+          z-index: 1;
+          color: white;
+          font-weight: 600;
+          font-size: 19px;
+          letter-spacing: 0;
+          text-transform: uppercase;
+          transition: color 0.2s ease;
+          white-space: nowrap;
+          font-family: $primaryFont;
+        }
+
+        &:hover::before {
+          transform: scaleX(1);
+        }
+
+        &:hover .btn-icon {
+          background-color: $dkgrey;
+        }
+
+        &:hover .btn-text.flooring {
+          color: $orange;
+        }
+        &:hover .btn-text.coating {
+          color: $green;
+        }
+        &:hover .btn-text.roofing {
+          color: $rust;
+        }
+
+        &:hover {
+          cursor: pointer;
+        }
       }
     }
   }
@@ -158,7 +271,6 @@
   background: url("/wp-content/uploads/2026/09/hero-careers.jpg") center center
     no-repeat;
   background-size: cover;
-  padding-bottom: 20px;
 
   .hero-content {
     display: block;
@@ -188,8 +300,12 @@
 .post-type-archive-careers {
   #careers-intro-grid {
     @include mixins.grid-container(1200px, 1);
-    padding-top: 60px;
-    padding-bottom: 60px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+
+    @media screen and (max-width: 1024px) {
+      padding-top: 30px;
+    }
 
     @media screen and (max-width: 840px) {
       padding-top: 30px;
@@ -218,7 +334,7 @@
     .careers-title-wrap {
       @include mixins.grid-fluid(1);
       grid-column: 2/3;
-      margin-top: 70px;
+      margin-top: 65px;
       margin-bottom: 0px;
       line-height: 1.4;
 
@@ -226,7 +342,7 @@
         text-transform: uppercase;
         font-size: var(--font-size-h3);
         font-weight: bold;
-        margin-top: 22px;
+        margin-top: 0;
         margin-bottom: 34px;
         line-height: 1.2;
       }
@@ -235,7 +351,7 @@
     .archive-grid {
       grid-column: 2/3;
       margin-top: 10px;
-      margin-bottom: 80px;
+      margin-bottom: 55px;
       line-height: 1.4;
       box-shadow: -2px -1px 9px -2px rgba(0, 0, 0, 0.55);
 

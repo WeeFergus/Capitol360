@@ -1,6 +1,11 @@
 @use "../abstracts/variables" as *;
 @use "../abstracts/mixins" as *;
 
+
+html {
+  scroll-behavior: smooth;
+}
+
 // Globals
 input,
 textarea {
@@ -26,6 +31,7 @@ body {
   font-family: $secondaryFont;
   font-weight: $fw-regular;
   line-height: 1.6;
+  letter-spacing: 0;
 }
 
 h1,
@@ -41,6 +47,7 @@ h1,
 .h1 {
   font-size: var(--font-size-h1);
   color: $dkgrey;
+  font-weight: 800;
 }
 
 h2,
@@ -103,6 +110,7 @@ li {
   font-size: var(--font-size-body);
   letter-spacing: 1px;
   font-family: $secondaryFont;
+  letter-spacing: 0;
 
   &.sm-caps {
     text-transform: uppercase;
@@ -122,6 +130,7 @@ li {
 p.subtitle {
   font-size: clamp(1.25rem, 0.827rem + 1.23vw, 1.75rem);
   font-family: $secondaryFont;
+  letter-spacing: 0;
 }
 
 .radius-bl-80 {

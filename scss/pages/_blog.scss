@@ -5,9 +5,14 @@
 .page-template-blog {
   #hero {
     @include mixins.grid-container(1200px, 1);
-    background: url("/wp-content/uploads/2026/09/hero-blog.jpg") center center
-      no-repeat;
+    background-color: $dkgrey;
+    background-position: center center;
     background-size: cover;
+    position: relative;
+
+    @media screen and (max-width: 800px) {
+      background-position: right center;
+    }
 
     .hero-content {
       display: block;
@@ -37,8 +42,9 @@
   main {
     .two-col-wrap {
       @include mixins.grid-container(1200px, 1);
-      padding-top: 60px;
-      padding-bottom: 100px;
+      padding-top: 50px;
+      padding-bottom: 80px;
+      align-items: flex-start;
 
       .two-col-grid {
         grid-column: 2/3;
@@ -46,6 +52,7 @@
         grid-gap: 55px;
 
         @media screen and (max-width: 1024px) {
+          padding-top: 30px;
           grid-gap: 25px;
         }
 
@@ -65,7 +72,7 @@
           text-transform: uppercase;
           font-size: var(--font-size-h3);
           font-weight: bold;
-          margin-top: 22px;
+          margin-top: 13px;
           margin-bottom: 34px;
           line-height: 1.2;
         }

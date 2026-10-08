@@ -210,7 +210,7 @@ a.button {
     content: "";
     position: absolute;
     inset: 0;
-    background: $dkgrey;
+    background: white;
     transform: scaleX(0);
     transform-origin: left center;
     transition: transform 0.2s ease;
@@ -258,9 +258,5 @@ a.button {
 
   &:hover .btn-icon {
     background-color: $dkgrey;
-  }
-
-  &:hover .btn-text {
-    color: #fff;
   }
 }

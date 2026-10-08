@@ -5,9 +5,10 @@
 body.page-contact {
   #hero {
     @include mixins.grid-container(1200px, 1);
-    background: url("/wp-content/uploads/2026/09/hero-contact.jpg") center
-      center no-repeat;
+    background-color: $dkgrey;
+    background-position: center center;
     background-size: cover;
+    position: relative;
 
     @media screen and (max-width: 768px) {
       background-position: 70%;
@@ -41,7 +42,7 @@ body.page-contact {
   #contact-intro-grid {
     @include mixins.grid-container(1200px, 1);
     padding-top: 60px;
-    padding-bottom: 60px;
+    padding-bottom: 55px;
 
     @media screen and (max-width: 840px) {
       padding-top: 30px;
@@ -106,7 +107,7 @@ body.page-contact {
       @include mixins.grid-fluid(1);
       align-items: center;
       grid-gap: 100px 40px;
-      padding-top: 70px;
+      padding-top: 75px;
       padding-bottom: 40px;
 
       @media screen and (max-width: 840px) {
@@ -118,6 +119,10 @@ body.page-contact {
         box-shadow: 0 8px 19px 0 rgba(49, 38, 28, 0.08);
         background: white;
         padding: 72px;
+
+        @media screen and (max-width: 560px) {
+          padding: 25px;
+        }
       }
     }
   }

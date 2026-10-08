@@ -69,6 +69,15 @@ footer {
       flex: 0 0 260px;
       ul li a {
         font-size: var(--font-size-body-lg);
+
+        &.roofing:hover {
+          color: $rust;
+        }
+        &.flooring:hover {
+        }
+        &.coating:hover {
+          color: $green;
+        }
       }
 
       @media screen and (max-width: 1024px) {
